@@ -34,3 +34,21 @@ This project analyzes the San Diego housing market using historical data from Re
 6. **Documentation**: Record methodology and key insights in this repo.
 
 ## Repository Structure
+├── data/ # Raw and cleaned datasets
+│ ├── raw/ # Raw downloads (Redfin/Zillow CSVs)
+│ └── processed/ # Cleaned CSV files ready for analysis
+├── notebooks/ # Jupyter notebooks for analysis (EDA, modeling)
+├── sql/ # SQL scripts for schema and queries
+├── visuals/ # Exported plots for GitHub preview
+├── tableau/ # Tableau workbook (.twbx) and dashboard links
+├── README.md # Project overview (this file)
+└── requirements.txt # Python dependencies (to recreate environment)
+
+
+## Next Steps
+- [ ] Populate the `data/raw/` folder with downloaded Redfin and Zillow data.  
+- [ ] Define the SQL schema (`sql/schema.sql`) for `prices`, `sales`, and `inventory`.  
+- [ ] Begin Python EDA in `notebooks/eda.ipynb`.  
+
+## Tableau Dashboard
+*(Link will be added after dashboard creation.)*
