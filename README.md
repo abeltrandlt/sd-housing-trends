@@ -28,7 +28,8 @@ This project analyzes the San Diego housing market using historical data from Re
 ## Project Workflow
 1. **Data Collection**: Download datasets from Redfin and Zillow.  
 2. **Database Setup**: Design SQL schema and load data into tables (`prices`, `inventory`, `sales`).  
-3. **Exploratory Data Analysis (EDA)**: Use Python for trend plots, correlations, and descriptive stats.  
+3. **Exploratory Data Analysis (EDA)**: Use Python for trend plots, correlations, and descriptive stats.
+     Note: The cleaned CSV file `san_diego_housing_metrics.csv` exceeds GitHub's file size limit. It is available locally or upon request.
 4. **Time-Series Analysis**: Explore seasonal trends and rolling averages.  
 5. **Visualization**: Build Tableau dashboards and link them here.  
 6. **Documentation**: Record methodology and key insights in this repo.
