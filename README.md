@@ -15,7 +15,7 @@ This project analyzes the San Diego housing market using historical data from Re
   - `monthly-median-sale-price`  
   - `monthly-housing-inventory`  
   - `monthly-home-sales`  
-- [Zillow Research Data](https://www.zillow.com/research/data/)  
+- [Zillow Research Data](https://www.zillow.com/research/data/)  (planned extension)
   - Zillow Home Value Index (ZHVI)  
   - Median Sale Prices  
 
@@ -26,13 +26,30 @@ This project analyzes the San Diego housing market using historical data from Re
 - **GitHub**: For project version control and documentation.
 
 ## Project Workflow
-1. **Data Collection**: Download datasets from Redfin and Zillow.  
-2. **Database Setup**: Design SQL schema and load data into tables (`prices`, `inventory`, `sales`).  
-3. **Exploratory Data Analysis (EDA)**: Use Python for trend plots, correlations, and descriptive stats.
+1. **Data Collection**: Download datasets from Redfin and Zillow.
+          The raw Redfin data was downloaded in `.tsv000` format and required basic cleaning:
+          - Parsed as tab-separated values using `pandas.read_csv(sep='\t')`
+          - Filtered to San Diego metro region (`PARENT_METRO_REGION == 'San Diego, CA'`)
+          - Selected and renamed relevant columns:
+            - `PERIOD_BEGIN` → `date`
+            - `MEDIAN_SALE_PRICE` → `median_price`
+            - `INVENTORY` → `inventory`
+            - `HOMES_SOLD` → `homes_sold`
+          - Converted `date` to datetime format
+          - Sorted chronologically
+          - Saved to `data/processed/san_diego_housing_metrics.csv`
+          - 
+          > The cleaned dataset includes 1,458 monthly records from Redfin for the San Diego housing market and serves as the foundation for further analysis.
+   
+2. **Database Setup**: Design SQL schema and load data into tables (`date`, `median_price`, `inventory`, `homes_sold`) via Python.
+          Schema made simple by design to support initial EDA & time series analysis.
+          Script: load_to_postgres.py
+
+4. **Exploratory Data Analysis (EDA)**: Use Python for trend plots, correlations, and descriptive stats.
      Note: The cleaned CSV file `san_diego_housing_metrics.csv` exceeds GitHub's file size limit. It is available locally or upon request.
-4. **Time-Series Analysis**: Explore seasonal trends and rolling averages.  
-5. **Visualization**: Build Tableau dashboards and link them here.  
-6. **Documentation**: Record methodology and key insights in this repo.
+5. **Time-Series Analysis**: Explore seasonal trends and rolling averages.  
+6. **Visualization**: Build Tableau dashboards and link them here.  
+7. **Documentation**: Record methodology and key insights in this repo.
 
 ## Repository Structure
 ├── data/ # Raw and cleaned datasets
