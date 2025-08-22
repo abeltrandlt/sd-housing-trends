@@ -69,7 +69,7 @@ Analyzed Redfin housing data to explore pricing trends, inventory changes, and m
 *https://public.tableau.com/app/profile/alberto.beltran.de.la.torre/viz/Book1_17557936058330/Dashboard1*
 
 ## Key Takeaways
-1. **Price Peak**: Median prices peaked in May 2022 after a 55% increase from April 2020.
+1. **Price Peak**: Median prices peaked in May 2022 after a 45% increase from April 2020.
 2. ***Demand Cooling**: YoY declines in homes sold, inventory, and list-to-sale ratio in 2023.
 3. **Supply-Driven Pricing**: Strong inverse correlation (r = -0.79) between inventory and prices.
 
