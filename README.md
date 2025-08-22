@@ -66,7 +66,7 @@ Analyzed Redfin housing data to explore pricing trends, inventory changes, and m
 - Median price trends + 3-month rolling average
 - Price vs Inventory (dual axis)
 - YoY metric changes (bar chart)
-*(Link will be added after dashboard creation.)*
+*https://public.tableau.com/app/profile/alberto.beltran.de.la.torre/viz/Book1_17557936058330/Dashboard1*
 
 ## Key Takeaways
 1. **Price Peak**: Median prices peaked in May 2022 after a 55% increase from April 2020.
