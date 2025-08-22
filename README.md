@@ -1,12 +1,12 @@
 # sd-housing-trends
-# San Diego Housing Trends Analysis
+# San Diego Housing Market Analysis
 
 ## Overview
-This project analyzes the San Diego housing market using historical data from Redfin and Zillow. It examines price trends, inventory changes, and market dynamics over time, culminating in an interactive Tableau dashboard.
+Analyzed Redfin housing data to explore pricing trends, inventory changes, and market dynamics in San Diego. Built an interactive Tableau dashboard with EDA insights and visualizations.
 
 ## Objectives
-- **Understand housing price trends** (5-year view, zip code focus).
-- **Analyze inventory and sales volume changes** over time.
+- **Understand San Diego housing price trends** (5-year focus).
+- **Analyze correlation between supply and price** over time.
 - **Identify key patterns or anomalies** (e.g., COVID spikes).
 - **Visualize findings** using Tableau for interactive insights.
 
@@ -23,7 +23,7 @@ This project analyzes the San Diego housing market using historical data from Re
 - **SQL**: For structured queries (SQLite/PostgreSQL).
 - **Python**: Data cleaning, EDA, and time-series analysis (`pandas`, `matplotlib`, `seaborn`, `statsmodels`).
 - **Tableau Public**: For dashboards and interactive visualizations.
-- **GitHub**: For project version control and documentation.
+- **GitHub, VSCode**: For project version control and documentation.
 
 ## Project Workflow
 1. **Data Collection**: Download datasets from Redfin and Zillow.
@@ -62,11 +62,18 @@ This project analyzes the San Diego housing market using historical data from Re
 ├── README.md # Project overview (this file)
 └── requirements.txt # Python dependencies (to recreate environment)
 
+## Tableau Dashboard
+- Median price trends + 3-month rolling average
+- Price vs Inventory (dual axis)
+- YoY metric changes (bar chart)
+*(Link will be added after dashboard creation.)*
+
+## Key Takeaways
+1. **Price Peak**: Median prices peaked in May 2022 after a 55% increase from April 2020.
+2. ***Demand Cooling**: YoY declines in homes sold, inventory, and list-to-sale ratio in 2023.
+3. **Supply-Driven Pricing**: Strong inverse correlation (r = -0.79) between inventory and prices.
 
 ## Next Steps
-- [ ] Populate the `data/raw/` folder with downloaded Redfin and Zillow data.  
-- [ ] Define the SQL schema (`sql/schema.sql`) for `prices`, `sales`, and `inventory`.  
-- [ ] Begin Python EDA in `notebooks/eda.ipynb`.  
-
-## Tableau Dashboard
-*(Link will be added after dashboard creation.)*
+- [ ] Expand to include Zillow datasets
+- [ ] Automate monthly market updates
+ 
