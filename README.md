@@ -52,15 +52,15 @@ Analyzed Redfin housing data to explore pricing trends, inventory changes, and m
 7. **Documentation**: Record methodology and key insights in this repo.
 
 ## Repository Structure
-├── data/ # Raw and cleaned datasets
-│ ├── raw/ # Raw downloads (Redfin/Zillow CSVs)
-│ └── processed/ # Cleaned CSV files ready for analysis
-├── notebooks/ # Jupyter notebooks for analysis (EDA, modeling)
-├── sql/ # SQL scripts for schema and queries
-├── visuals/ # Exported plots for GitHub preview
-├── tableau/ # Tableau workbook (.twbx) and dashboard links
-├── README.md # Project overview (this file)
-└── requirements.txt # Python dependencies (to recreate environment)
++── data/ # Raw and cleaned datasets
+│   +── raw/ # Raw downloads (Redfin/Zillow CSVs)
+│   +── processed/ # Cleaned CSV files ready for analysis
++── notebooks/ # Jupyter notebooks for analysis (EDA, modeling)
++── sql/ # SQL scripts for schema and queries
++── visuals/ # Exported plots for GitHub preview
++── tableau/ # Tableau workbook (.twbx) and dashboard links
++── README.md # Project overview (this file)
++── requirements.txt # Python dependencies (to recreate environment)
 
 ## Tableau Dashboard
 - Median price trends + 3-month rolling average
@@ -70,7 +70,7 @@ Analyzed Redfin housing data to explore pricing trends, inventory changes, and m
 
 ## Key Takeaways
 1. **Price Peak**: Median prices peaked in May 2022 after a 45% increase from April 2020.
-2. ***Demand Cooling**: YoY declines in homes sold, inventory, and list-to-sale ratio in 2023.
+2. **Demand Cooling**: YoY declines in homes sold, inventory, and list-to-sale ratio in 2023.
 3. **Supply-Driven Pricing**: Strong inverse correlation (r = -0.79) between inventory and prices.
 
 ## Next Steps
