@@ -1,80 +1,144 @@
-# sd-housing-trends
-# San Diego Housing Market Analysis
+# San Diego Housing Market Analysis  
+**Supply, Demand, and Price Dynamics (2012–2025)**
+
+---
 
 ## Overview
-Analyzed Redfin housing data to explore pricing trends, inventory changes, and market dynamics in San Diego. Built an interactive Tableau dashboard with EDA insights and visualizations.
+This project analyzes housing market dynamics in San Diego using Redfin data, focusing on the relationship between **inventory (supply), transaction activity (demand), and pricing behavior**.
 
-## Objectives
-- **Understand San Diego housing price trends** (5-year focus).
-- **Analyze correlation between supply and price** over time.
-- **Identify key patterns or anomalies** (e.g., COVID spikes).
-- **Visualize findings** using Tableau for interactive insights.
+The goal was not just to visualize trends, but to identify **what actually drives price movement** and how market conditions shifted during and after COVID.
 
-## Data Sources
-- [Redfin Data Center](https://www.redfin.com/news/data-center/)  
-  - `monthly-median-sale-price`  
-  - `monthly-housing-inventory`  
-  - `monthly-home-sales`  
-- [Zillow Research Data](https://www.zillow.com/research/data/)  (planned extension)
-  - Zillow Home Value Index (ZHVI)  
-  - Median Sale Prices  
+---
 
-## Tools
-- **SQL**: For structured queries (SQLite/PostgreSQL).
-- **Python**: Data cleaning, EDA, and time-series analysis (`pandas`, `matplotlib`, `seaborn`, `statsmodels`).
-- **Tableau Public**: For dashboards and interactive visualizations.
-- **GitHub, VSCode**: For project version control and documentation.
+## Key Questions
+- What drove the rapid price acceleration from 2020 to 2022?
+- How strongly does inventory influence price behavior?
+- Did demand meaningfully contract in 2023?
+- Are there leading indicators that precede price movement?
 
-## Project Workflow
-1. **Data Collection**: Download datasets from Redfin and Zillow.
-          The raw Redfin data was downloaded in `.tsv000` format and required basic cleaning:
-          - Parsed as tab-separated values using `pandas.read_csv(sep='\t')`
-          - Filtered to San Diego metro region (`PARENT_METRO_REGION == 'San Diego, CA'`)
-          - Selected and renamed relevant columns:
-            - `PERIOD_BEGIN` → `date`
-            - `MEDIAN_SALE_PRICE` → `median_price`
-            - `INVENTORY` → `inventory`
-            - `HOMES_SOLD` → `homes_sold`
-          - Converted `date` to datetime format
-          - Sorted chronologically
-          - Saved to `data/processed/san_diego_housing_metrics.csv`
-          - 
-          > The cleaned dataset includes 1,458 monthly records from Redfin for the San Diego housing market and serves as the foundation for further analysis.
-   
-2. **Database Setup**: Design SQL schema and load data into tables (`date`, `median_price`, `inventory`, `homes_sold`) via Python.
-          Schema made simple by design to support initial EDA & time series analysis.
-          Script: load_to_postgres.py
+---
 
-4. **Exploratory Data Analysis (EDA)**: Use Python for trend plots, correlations, and descriptive stats.
-     Note: The cleaned CSV file `san_diego_housing_metrics.csv` exceeds GitHub's file size limit. It is available locally or upon request.
-5. **Time-Series Analysis**: Explore seasonal trends and rolling averages.  
-6. **Visualization**: Build Tableau dashboards and link them here.  
-7. **Documentation**: Record methodology and key insights in this repo.
+## Dataset
+- **Source**: Redfin Data Center  
+- **Scope**: San Diego Metro Area  
+- **Time Range**: 2012 – 2025  
+- **Granularity**: Monthly  
+- **Records**: 1,458 observations  
 
-## Repository Structure
-``` 
-+── data/              # Raw and cleaned datasets
-│   +── raw/
-│   +── processed/
-+── notebooks/         # Jupyter notebooks for analysis (EDA, modeling)
-+── sql/               # SQL scripts for schema and queries
-+── tableau/           # Tableau workbook (.twb)
-+── README.md          # Project overview (this file)
-+── requirements.txt   # Python dependencies (to recreate environment)
-```
+### Core Features
+- Median Sale Price  
+- Inventory  
+- Homes Sold  
+- Pending Sales  
+- New Listings  
+- Days on Market  
+- Sale-to-List Ratio  
+
+---
+
+## Tools & Stack
+- **Python (Pandas, Seaborn, Matplotlib)** → EDA & feature engineering  
+- **SQL (PostgreSQL)** → Data storage & querying  
+- **Tableau** → Business-facing visualization  
+- **GitHub** → Version control & documentation  
+
+---
+
+## Methodology
+
+### 1. Data Processing
+- Filtered to the San Diego metro region
+- Aggregated to monthly averages
+- Engineered features:
+  - 3-month rolling averages
+  - MoM and YoY % changes
+  - Lagged relationships (inventory → future price)
+
+### 2. Exploratory Analysis
+- Time-series trend analysis (price, inventory, sales)
+- Rolling average smoothing
+- Demand contraction analysis (2023)
+- Correlation + lag analysis
+
+### 3. Visualization
+- Built a Tableau dashboard for:
+  - Price trend + moving average
+  - Price vs inventory (dual axis)
+  - YoY demand shifts
+
+---
+
+## Key Insights
+
+### 1. Price Acceleration Was Supply-Driven
+- Median price increased ~45.8% (Apr 2020 → May 2022)  
+- Inventory fell ~34% over the same period  
+
+**Interpretation:**  
+Price growth aligned directly with supply contraction.
+
+---
+
+### 2. Inventory Leads Price (Short-Term Signal)
+- Strongest inverse correlations occurred at 1–5 month lags (~ -0.25)  
+
+**Interpretation:**  
+Inventory tightening tends to **precede upward price pressure**, making it a usable short-term signal.
+
+---
+
+### 3. 2023 Marked a Clear Demand Reset
+- Homes Sold: -22.3% YoY  
+- Pending Sales: -18.5% YoY  
+- New Listings: -21.9% YoY  
+
+**Interpretation:**  
+Demand contraction was broad—not isolated—likely driven by affordability and rising rates.
+
+---
+
+### 4. Inventory is the Dominant Price Driver
+- Correlation with price: -0.79  
+
+**Interpretation:**  
+Supply constraints are the primary lever in this market.  
+Transaction volume reflects the market—it doesn’t drive it.
+
+---
 
 ## Tableau Dashboard
-- Median price trends + 3-month rolling average
-- Price vs Inventory (dual axis)
-- YoY metric changes (bar chart)
-*https://public.tableau.com/app/profile/alberto.beltran.de.la.torre/viz/Book1_17557936058330/Dashboard1*
+🔗 *(https://public.tableau.com/app/profile/alberto.beltran.de.la.torre/viz/Book1_17557936058330/Dashboard1)*  
 
-## Key Takeaways
-1. **Price Peak**: Median prices peaked in May 2022 after a 45% increase from April 2020.
-2. **Demand Cooling**: YoY declines in homes sold, inventory, and list-to-sale ratio in 2023.
-3. **Supply-Driven Pricing**: Strong inverse correlation (r = -0.79) between inventory and prices.
+### Views Included
+- Median Price + 3-Month Moving Average  
+- Price vs Inventory (dual axis)  
+- YoY Demand Changes (2023)  
 
-## Next Steps
-- [ ] Expand to include Zillow datasets
-- [ ] Automate monthly market updates
- 
+---
+
+## Repository Structure
+
+data/
+raw/
+processed/
+notebooks/
+sql/
+tableau/
+README.md
+
+---
+
+## What This Project Demonstrates
+- Time-series analysis & feature engineering  
+- Translating raw data → business insight  
+- Identifying leading vs lagging indicators  
+- Communicating findings clearly (technical → non-technical)  
+
+---
+
+## Next Steps (Extensions)
+- Integrate Zillow Home Value Index (ZHVI)  
+- Build a short-term price forecasting model  
+- Automate monthly market updates  
+
+---
