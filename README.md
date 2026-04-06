@@ -117,7 +117,7 @@ Transaction volume reflects the market—it doesn’t drive it.
 ---
 
 ## Repository Structure
-
+```
 data/
 raw/
 processed/
@@ -125,6 +125,7 @@ notebooks/
 sql/
 tableau/
 README.md
+```
 
 ---
 
